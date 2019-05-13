@@ -104,7 +104,7 @@ public class PostgreSQLAdvisoryLockTemplate {
                 new RowMapper<Boolean>() {
                     @Override
                     public Boolean mapRow(ResultSet rs) throws SQLException {
-                        return "t".equals(rs.getString("pg_try_advisory_lock"));
+                        return rs.getBoolean("pg_try_advisory_lock");
                     }
                 });
         return results.size() == 1 && results.get(0);
